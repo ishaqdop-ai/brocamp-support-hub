@@ -78,8 +78,8 @@ export default function StudentDashboard() {
       <nav className="bg-card shadow-soft border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
-              Brocamp Complaints
+            <h1 className="text-2xl font-bold gradient-primary bg-clip-text text-white px-4">
+              Brocamp Helpdesk
             </h1>
             <div className="flex items-center gap-4">
               <span className="text-sm text-muted-foreground">Welcome, {profile?.full_name}</span>
