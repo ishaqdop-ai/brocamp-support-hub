@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -45,6 +45,7 @@ export default function AdminComplaintDetail() {
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [currentUserId, setCurrentUserId] = useState<string>("");
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     checkAdminAuth();
@@ -52,6 +53,15 @@ export default function AdminComplaintDetail() {
     fetchMessages();
     subscribeToMessages();
   }, [id]);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [messages]);
 
   const checkAdminAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -113,13 +123,13 @@ export default function AdminComplaintDetail() {
 
   const subscribeToMessages = () => {
     const channel = supabase
-      .channel("schema-db-changes")
+      .channel(`messages-complaint-${id}`)
       .on(
-        "postgres_changes",
+        'postgres_changes',
         {
-          event: "INSERT",
-          schema: "public",
-          table: "messages",
+          event: 'INSERT',
+          schema: 'public',
+          table: 'messages',
           filter: `complaint_id=eq.${id}`,
         },
         () => {
@@ -296,6 +306,7 @@ export default function AdminComplaintDetail() {
                   </div>
                 ))
               )}
+              <div ref={messagesEndRef} />
             </div>
 
             <div className="flex gap-2 pt-4 border-t border-border">
