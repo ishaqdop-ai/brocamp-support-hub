@@ -79,8 +79,8 @@ export default function StudentSignup() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-subtle p-4">
       <Card className="w-full max-w-md shadow-medium">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-3xl font-bold gradient-primary bg-clip-text text-transparent">
-            Brocamp Complaints
+          <CardTitle className="text-3xl font-bold gradient-primary bg-clip-text text-white leading-[2]">
+            Brocamp Helpdesk
           </CardTitle>
           <CardDescription>Create your student account</CardDescription>
         </CardHeader>
