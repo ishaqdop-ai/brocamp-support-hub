@@ -10,8 +10,8 @@ export default function Index() {
     <div className="min-h-screen bg-gradient-subtle">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4 gradient-primary bg-clip-text text-transparent">
-            Brocamp Complaints
+          <h1 className="text-5xl font-bold mb-4 gradient-primary bg-clip-text text-white leading-[2]">
+            Brocamp Helpdesk
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Secure and transparent complaint management system for Brocamp students and administrators
